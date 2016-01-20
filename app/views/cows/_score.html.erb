@@ -1,0 +1,9 @@
+
+  <% score = cow.score.to_i %>
+  <% score = 0 unless 0 <= score and score <= 5 %>
+  <% score.times do %>
+    <span style="color: #f1c40f;" class="glyphicon glyphicon-star" aria-hidden="true"></span>
+  <% end %>
+  <% (5 - score).times do %>
+    <span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>
+  <% end %>

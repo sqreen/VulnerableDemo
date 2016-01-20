@@ -1,0 +1,41 @@
+<p id="notice"><%= notice %></p>
+
+<div class="row">
+    <div class="col-md-3">
+        <div class="thumbnail center-block" >
+            <div style="height: 200px;" >
+                 <% 
+                     if @cow and not @cow.url.to_s =~ /[<>]/ then
+                         url = @cow.url.html_safe
+                     else
+                         url = @cow.url
+                     end
+                 %>
+                <img src="<%= url %>"
+                     class="img-responsive"
+                     alt="<%= @cow.name %>">
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="caption">
+            <h3><%= raw @cow.name %></h3>
+            <ul>
+                <li>Safe: <%= raw @secure %></li>
+                <li><%= @cow.location %></li>
+                <li><%= render partial: 'score', :locals => {cow: @cow} %></li>
+                <li>Birthday: <%= @cow.birthday %></li>
+                <li>Single: <%= @cow.single ? "Yes" : "No" %></li>
+                <li>Height: <%= @cow.height %></li>
+                <li>Weight: <%= @cow.weight %></li>
+            </ul>
+            <p>
+        </div>
+    </div>
+</div>
+
+
+<%= link_to raw('<i class="fa fa-thumbs-o-up"></i> ') + 'Vote', "#", :class => "btn btn-warning" %>
+<%= link_to raw('<i class="fa fa-pencil"></i> ') + 'Edit', edit_cow_path(@cow), :class => "btn btn-danger" %>
+<%= link_to raw('<i class="fa fa-arrow-left"></i> ') + 'Back', cows_path, :class => "btn btn-info" %>
+<%= link_to raw('<i class="fa fa-link"></i> ') + 'Alive?', ping_path(:id => @cow.host), :class => "btn btn-info" %>
