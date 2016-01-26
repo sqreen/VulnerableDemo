@@ -1,11 +1,22 @@
 <div class="row">
+    <div class="col-lg-12">
+      <form class="navbar-form navbar-left" role="search" action="/cows/1" method="get">
+        <div class="form-group">
+          <label>Fast cow access:</label>
+          <input type="text" class="form-control" placeholder="Cow">
+        </div>
+        <button type="submit" class="btn btn-default">Go</button>
+      </form>
+    </div>
+</div>
+<div class="row">
     <div class="col-lg-8">
         <p id="notice"><%= notice %></p>
 
         <br>
 
         <% @cows.each do |cow| %>
-            <div class="col-sm-6 col-md-4">
+            <div class="col-sm-6 col-md-3">
                 <div class="thumbnail" >
                     <img src="<%= cow.url %>"
                          class="img-responsive"
@@ -28,18 +39,18 @@
 
 
     </div>
-    <div class="col-md-4">
+    <div class="col-md-3">
         <div class="well">
-            <h2>
+            <h4>
                 <%= link_to raw('<i class="fa fa-plus-circle fa3"></i> Propose your cow'), new_cow_path %>
-            </h2>
+            </h4>
         </div>
         <div class="well">
-            <h2>Cow of the month</h2>
+            <h4>Cow of the month</h4>
             <p>The cow of the month has not been elected yet. Please come back later!</p>
         </div>
         <div class="well">
-            <h2><i class="fa fa-twitter"></i> Last tweeted cows</h2>
+            <h4><i class="fa fa-twitter"></i> Last tweeted cows</h4>
             <p>None yet!</p>
         </div>
 

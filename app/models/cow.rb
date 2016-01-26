@@ -5,6 +5,12 @@ class Cow < ActiveRecord::Base
   end
 
   def self.ping(host)
-    `ping -t 1 #{host}`
+    case RUBY_PLATFORM
+    when /darwin/
+      opt = "-t"
+    else
+      opt = "-c"
+    end
+    `ping #{opt} 1 #{host}`
   end
 end
