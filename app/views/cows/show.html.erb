@@ -1,42 +1,49 @@
 <p id="notice"><%= notice %></p>
 
 <div class="row">
-    <div class="col-md-6">
-        <div class="thumbnail center-block" >
-            <div style="" >
-                 <% 
-                     if @cow and not @cow.url.to_s =~ /[<>]/ then
-                         url = (@cow.url_big || @cow.url).html_safe
-                     else
-                         url = @cow.url_big || @cow.url
-                     end
-                 %>
-                <img src="<%= url %>"
-                     class="img-responsive"
-                     alt="<%= @cow.name %>">
-            </div>
-        </div>
-    </div>
-    <div class="col-md-6">
-        <div class="caption">
-          <div class="jumbotron">
-            <h2><%= raw @cow.name %></h2>
-            <p><%= @cow.description %></p>
-          </div>
-          <ul>
-            <li><%= @cow.url_big %></li>
-            <li><%= @cow.description %></li>
-            <li><%= @cow.location %></li>
-            <li>Birthday: <%= @cow.birthday %></li>
-            <li><%= render partial: 'score', :locals => {cow: @cow} %></li>
-          </ul>
-          <p>
-        </div>
-    </div>
+  <div class="col-lg-12 back">
+    <%= link_to raw('<i class="fa fa-arrow-left"></i> ') + 'Back', cows_path, :class => "btn btn-default" %>
+  </div>
 </div>
 
-
-<%= link_to raw('<i class="fa fa-thumbs-o-up"></i> ') + 'Vote', "#", :class => "btn btn-warning" %>
-<%= link_to raw('<i class="fa fa-pencil"></i> ') + 'Edit', edit_cow_path(@cow), :class => "btn btn-danger" %>
-<%= link_to raw('<i class="fa fa-arrow-left"></i> ') + 'Back', cows_path, :class => "btn btn-info" %>
-<%= link_to raw('<i class="fa fa-link"></i> ') + 'Alive?', ping_path(1), :class => "" %>
+<div class="row">
+  <div class="col-md-6 thumb">
+    <div class="thumbnail center-block">
+      <div style="">
+        <%
+         if @cow and not @cow.url.to_s =~ /[<>]/ then
+           url = (@cow.url_big || @cow.url).html_safe
+         else
+           url = @cow.url_big || @cow.url
+         end
+        %>
+        <img src="<%= url %>" class="img-responsive" alt="<%= @cow.name %>">
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6 content">
+    <div class="caption">
+      <h2><%= raw @cow.name %></h2>
+      <p><%= @cow.description %></p>
+      <div>
+        <strong>Url :</strong>
+        <p><%= @cow.url_big %></p>
+      </div>
+      <div>
+        <strong>Location :</strong>
+        <p><%= @cow.location %></p>
+      </div>
+      <div>
+        <strong>Birthday :</strong>
+        <p><%= @cow.birthday %></p>
+      </div>
+      <div>
+        <strong>Score :</strong>
+        <p><%= render partial: 'score', :locals => {cow: @cow} %></p>
+      </div>
+    </div>
+    <%= link_to raw('<i class="fa fa-thumbs-o-up"></i> ') + 'Vote', "#", :class => "btn btn-info" %>
+    <%= link_to raw('<i class="fa fa-pencil"></i> ') + 'Edit', edit_cow_path(@cow), :class => "btn btn-warning" %>
+    <%= link_to raw('<i class="fa fa-link"></i> ') + 'Alive?', ping_path(1), :class => "" %>
+  </div>
+</div>

@@ -13,36 +13,79 @@ Sydney NSW 2001"
 # user1 = User.create :email => "bruce@manor.com",  :password => "adrenalin"
 # user2 = User.create :email => "robin@manor.com",  :password => "growth"
 # user3 = User.create :email => "alfred@manor.com", :password => "distinction"
+cow1 = Cow.create "name"=>"Padmé Amidala",
+                  "location"=>"New york",
+                  "birthday"=>Time.now,
+                  "height"=>nil,
+                  "weight"=>nil,
+                  "single"=>false,
+                  "score"=>4,
+                  "url"=>"/sm_amidala.jpg",
+                  "url_big"=>"/amidala.jpg",
+                  "description" => "Padmé Amidala was a courageous, hopeful leader, serving as Queen and then Senator of Naboo -- and was also handy with a blaster."
 
-cow1 = Cow.create "name"=>"Milka",
+cow2 = Cow.create "name"=>"Darth Vader",
                   "location"=>"Switzerland",
                   "birthday"=>Time.now,
                   "height"=>nil,
                   "weight"=>nil,
                   "single"=>false,
-                  "score"=>2,
-                  "url"=>"https://upload.wikimedia.org/wikipedia/commons/thumb/a/a1/Paris_Milka_Cow.jpg/220px-Paris_Milka_Cow.jpg",
-                  "url_big"=>"/milka_big.jpg",
-                  "description" => "The Milka cow is a strongly chocolated cow."
+                  "score"=>3,
+                  "url"=>"/sm_darthvader.jpg",
+                  "url_big"=>"/darthvader.jpg",
+                  "description" => "Once a heroic Jedi Knight, Darth Vader was seduced by the dark side of the Force, became a Sith Lord, and led the Empire’s eradication of the Jedi Order."
 
-cow2 = Cow.create "name"=>"Kamadhenu",
+cow3 = Cow.create "name"=>"Luke Skywalker",
                   "location"=>"India",
                   "birthday"=>Time.now,
                   "height"=>nil,
                   "weight"=>nil,
                   "single"=>false,
-                  "score"=>3,
-                  "url"=>"/Kamadhenu.png",
-                  "url_big"=>"/kamadhenu_big.jpg",
-                  "description" => "Kamadhenu is a divine bovine-goddess described in Hinduism as the mother of all cows."
+                  "score"=>2,
+                  "url"=>"/sm_luke.jpg",
+                  "url_big"=>"/luke.jpg",
+                  "description" => "Luke Skywalker was a Tatooine farmboy who rose from humble beginnings to become one of the greatest Jedi the galaxy has ever known."
 
-cow3 = Cow.create "name"=>"Anonymous",
+cow4 = Cow.create "name"=>"Leia",
                   "location"=>"France",
                   "birthday"=>Time.now,
                   "height"=>nil,
                   "weight"=>nil,
                   "single"=>false,
-                  "score"=>1,
-                  "url"=>"https://upload.wikimedia.org/wikipedia/commons/thumb/3/33/CowFace.jpg/220px-CowFace.jpg",
-                  "description" => "This cow can be found in my neighbour's garden."
+                  "score"=>2,
+                  "url"=>"/sm_leia.jpg",
+                  "url_big"=>"/leia.jpg",
+                  "description" => "Princess Leia Organa was one of the Rebel Alliance’s greatest leaders, fearless on the battlefield and dedicated to ending the tyranny of the Empire."
 
+cow5 = Cow.create "name"=>"Palpatine",
+                  "location"=>"Hungary",
+                  "birthday"=>Time.now,
+                  "height"=>nil,
+                  "weight"=>nil,
+                  "single"=>false,
+                  "score"=>3,
+                  "url"=>"/sm_palpatine.jpg",
+                  "url_big"=>"/palpatine.jpg",
+                  "description" => "Scheming, powerful, and evil to the core, Darth Sidious restored the Sith and destroyed the Jedi Order. Living a double life, Sidious was in fact Palpatine, a Naboo Senator and phantom menace."
+
+cow6 = Cow.create "name"=>"Han Solo",
+                  "location"=>"Texas",
+                  "birthday"=>Time.now,
+                  "height"=>nil,
+                  "weight"=>nil,
+                  "single"=>false,
+                  "score"=>1,
+                  "url"=>"/sm_hansolo.jpg",
+                  "url_big"=>"/hansolo.jpg",
+                  "description" => "Smuggler. Scoundrel. Hero. Han Solo, captain of the Millennium Falcon, was one of the great leaders of the Rebel Alliance."
+
+cow4 = Cow.create "name"=>"Jar Jar Binks",
+                  "location"=>"Guatemala",
+                  "birthday"=>Time.now,
+                  "height"=>nil,
+                  "weight"=>nil,
+                  "single"=>false,
+                  "score"=>5,
+                  "url"=>"/sm_jarjar.jpg",
+                  "url_big"=>"/jarjar.jpg",
+                  "description" => "SA clumsy, well-meaning Gungan outcast on Naboo, Jar Jar Binks struggled to prove his worth throughout his life."

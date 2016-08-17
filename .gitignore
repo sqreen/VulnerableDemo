@@ -19,3 +19,13 @@
 *.swp
 
 /public/assets/
+
+.DS_Store
+npm-debug.log
+node_modules
+coverage
+dist
+staging.sh
+local.sh
+attacks.txt
+config/sqreen.yml

@@ -28,3 +28,5 @@ gem "font-awesome-rails"
 gem 'devise'
 #############
 
+gem 'sqreen'
+
