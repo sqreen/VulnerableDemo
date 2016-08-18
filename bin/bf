@@ -45,7 +45,7 @@ def is_login_valid(host, user, password)
 
   code, body = get_form_result(host, user, password)
 
-  if body.include?("Invalid email or password")
+  if body =~ /Invalid email or password/i
     return {status: 403}
   else
     return {status: 200}
