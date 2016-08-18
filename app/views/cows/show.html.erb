@@ -2,7 +2,7 @@
 
 <div class="row">
   <div class="col-lg-12 back">
-    <%= link_to raw('<i class="fa fa-arrow-left"></i> ') + 'Back', cows_path, :class => "btn btn-default" %>
+    <%= link_to raw('<i class="fa fa-arrow-left"></i> ') + 'Back', characters_path, :class => "btn btn-default" %>
   </div>
 </div>
 
@@ -43,7 +43,7 @@
       </div>
     </div>
     <%= link_to raw('<i class="fa fa-thumbs-o-up"></i> ') + 'Vote', "#", :class => "btn btn-info" %>
-    <%= link_to raw('<i class="fa fa-pencil"></i> ') + 'Edit', edit_cow_path(@cow), :class => "btn btn-warning" %>
+    <%= link_to raw('<i class="fa fa-pencil"></i> ') + 'Edit', edit_character_path(@cow), :class => "btn btn-warning" %>
     <%= link_to raw('<i class="fa fa-link"></i> ') + 'Alive?', ping_path(1), :class => "" %>
   </div>
 </div>
