@@ -10,9 +10,9 @@
 user0 = User.create :email => "t.anderson@metacortex.com", :password => "whiterabit", :phone => "+33 6 73 31 09 11", :address => " City of Sydney
 GPO Box 1591
 Sydney NSW 2001"
-# user1 = User.create :email => "bruce@manor.com",  :password => "adrenalin"
-# user2 = User.create :email => "robin@manor.com",  :password => "growth"
-# user3 = User.create :email => "alfred@manor.com", :password => "distinction"
+user1 = User.create :email => "bruce@manor.com",  :password => "adrenalin"
+user2 = User.create :email => "robin@manor.com",  :password => "growth"
+user3 = User.create :email => "alfred@manor.com", :password => "distinction"
 cow1 = Cow.create "name"=>"Padmé Amidala",
                   "location"=>"New york",
                   "birthday"=>Time.now,
