@@ -30,3 +30,6 @@ gem 'devise'
 
 gem 'sqreen'
 
+# For the bruteforce script
+gem 'colorize'
+gem 'mechanize'

