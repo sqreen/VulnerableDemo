@@ -63,19 +63,19 @@ puts
 for line in File.readlines(file) do
   next if line.strip.empty?
   user, password = line.strip.split(/ +/)
-  $stdout.write "trying #{user}:#{password}..."
+  $stdout.write "trying #{user}:#{password}... "
   $stdout.flush
   
   res = is_login_valid(to, user, password)
 
   case res[:status]
   when 200
-    $stdout.puts(" OK!".green)
+    $stdout.puts("OK!".green)
     break
   when 403
-    $stdout.puts(" failure".colorize(:blue))
+    $stdout.puts("failure".colorize(:blue))
   when 500
-    $stdout.puts(" server error".red)
+    $stdout.puts("server error".red)
     break
   end
 
