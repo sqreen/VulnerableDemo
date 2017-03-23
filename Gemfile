@@ -28,8 +28,3 @@ gem "font-awesome-rails"
 gem 'devise'
 #############
 
-gem 'sqreen'
-
-# For the bruteforce script
-gem 'colorize'
-gem 'mechanize'
