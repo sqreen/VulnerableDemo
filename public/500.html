@@ -1,148 +1,66 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Sqreen has detected an attack</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <style>
-      body {
-        background-color: #EFEFEF;
-        text-align: center;
-        font-family: "helvetica neue","helvetica", sans-serif;
-        margin: 0;
-        padding: 0;
-        line-height: 100vh;
-      }
+<head>
+  <title>We're sorry, but something went wrong (500)</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <style>
+  body {
+    background-color: #EFEFEF;
+    color: #2E2F30;
+    text-align: center;
+    font-family: arial, sans-serif;
+    margin: 0;
+  }
 
-      .dialog {
-        display: inline-block;
-        vertical-align: middle;
-        line-height: normal;
-      }
+  div.dialog {
+    width: 95%;
+    max-width: 33em;
+    margin: 4em auto 0;
+  }
 
-      .left, .right {
-        display: inline-block;
-        vertical-align: middle;
-      }
+  div.dialog > div {
+    border: 1px solid #CCC;
+    border-right-color: #999;
+    border-left-color: #999;
+    border-bottom-color: #BBB;
+    border-top: #B00100 solid 4px;
+    border-top-left-radius: 9px;
+    border-top-right-radius: 9px;
+    background-color: white;
+    padding: 7px 12% 0;
+    box-shadow: 0 3px 8px rgba(50, 50, 50, 0.17);
+  }
 
-      .right {
-        text-align: left;
-        padding: 0 0 0 70px;
-        animation: text .7s ease .3s both;
-        -webkit-animation: text .7s ease .3s both;
-      }
+  h1 {
+    font-size: 100%;
+    color: #730E15;
+    line-height: 1.5em;
+  }
 
-      @-webkit-keyframes text {
-        from {
-          opacity: 0;
-        }
-        to {
-          opacity: 1;
-        }
-      }
+  div.dialog > p {
+    margin: 0 0 1em;
+    padding: 1em;
+    background-color: #F7F7F7;
+    border: 1px solid #CCC;
+    border-right-color: #999;
+    border-left-color: #999;
+    border-bottom-color: #999;
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+    border-top-color: #DADADA;
+    color: #666;
+    box-shadow: 0 3px 8px rgba(50, 50, 50, 0.17);
+  }
+  </style>
+</head>
 
-      @keyframes text {
-        from {
-          opacity: 0;
-        }
-        to {
-          opacity: 1;
-        }
-      }
-
-      h1 {
-        color: #464646;
-        font-size: 3em;
-        font-weight: 500;
-        line-height: 1em;
-      }
-
-      img {
-        width: 300px;
-        opacity: 0;
-        -webkit-animation-name: bounceIn;
-        animation-name: bounceIn;
-        -webkit-animation-duration: .8s;
-        animation-duration: .8s;
-        -webkit-animation-fill-mode: forwards;
-        animation-fill-mode: forwards;
-        animation-delay: .25s;
-        -webkit-animation-delay: .25s;
-        -webkit-animation-timing-function: ease;
-        animation-timing-function: ease;
-
-        -webkit-transform: scale3d(.3, .3, .3);
-        transform: scale3d(.3, .3, .3);
-      }
-
-      @-webkit-keyframes bounceIn {
-        from, 20%, to {
-          -webkit-animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
-          animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
-        }
-
-        0% {
-          opacity: 0;
-          -webkit-transform: scale3d(.3, .3, .3);
-          transform: scale3d(.3, .3, .3);
-        }
-
-        20% {
-          -webkit-transform: scale3d(1.1, 1.1, 1.1);
-          transform: scale3d(1.1, 1.1, 1.1);
-        }
-
-        to {
-          opacity: 1;
-          -webkit-transform: scale3d(1, 1, 1);
-          transform: scale3d(1, 1, 1);
-          -webkit-filter: drop-shadow(0px 14px 7px #A0A0A0);
-          filter: drop-shadow(0px 14px 7px #A0A0A0);
-        }
-      }
-
-      @keyframes bounceIn {
-        from, 20%, to {
-          -webkit-animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
-          animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
-        }
-
-        0% {
-          opacity: 0;
-          -webkit-transform: scale3d(.3, .3, .3);
-          transform: scale3d(.3, .3, .3);
-        }
-
-        20% {
-          -webkit-transform: scale3d(1.1, 1.1, 1.1);
-          transform: scale3d(1.1, 1.1, 1.1);
-        }
-        to {
-          opacity: 1;
-          -webkit-transform: scale3d(1, 1, 1);
-          transform: scale3d(1, 1, 1);
-          -webkit-filter: drop-shadow(0px 14px 7px #A0A0A0);
-          filter: drop-shadow(0px 14px 7px #A0A0A0);
-        }
-      }
-
-      p {
-        color: #464646;
-        font-size: 1.2em;
-        font-weight: 300;
-        line-height: 1.2em;
-      }
-    </style>
-  </head>
-  <body>
-    <!-- This file lives in public/500.html -->
-    <div class="dialog">
-      <div class="left">
-        <img src="/shield.png">
-      </div>
-      <div class="right">
-        <h1>Sqreen has detected<br>an attack.</h1>
-        <p>If you are the application owner<br>check the Sqreen dashboard for more information.</p>
-      </div>
+<body>
+  <!-- This file lives in public/500.html -->
+  <div class="dialog">
+    <div>
+      <h1>We're sorry, but something went wrong.</h1>
     </div>
-  </body>
+    <p>If you are the application owner check the logs for more information.</p>
+  </div>
+</body>
 </html>

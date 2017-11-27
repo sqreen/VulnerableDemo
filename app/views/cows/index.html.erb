@@ -7,9 +7,9 @@
     <p id="notice"><%= notice %></p>
 
     <div class="col-md-3">
-      <form class="navbar-form" role="search" action="/characters/1" method="get">
+      <form class="navbar-form" role="search" action="/" method="get">
         <div class="form-group">
-          <input type="text" class="form-control" placeholder="Type here">
+          <input name="search" type="text" class="form-control" placeholder="Type here" value="<%= raw params[:search] %>">
         </div>
         <button type="submit" class="btn btn-default">Search</button>
       </form>
