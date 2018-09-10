@@ -31,4 +31,4 @@ gem 'devise'
 # For the bruteforce script
 gem 'colorize'
 gem 'mechanize'
-# gem 'sqreen'
+gem 'sqreen', "> 1.0beta"

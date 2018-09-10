@@ -32,6 +32,34 @@
       </div>
     </div>
 
+    <div class="col-md-9">
+      <pre>
+      Uname: <%=`uname -a`.chomp%>
+      Cmdline: <%= $0 %> <%= ARGV.join(' ') %>
+  <% if defined?(Sqreen) %>
+      Sqreen: <%= Sqreen::VERSION %>
+      Sqreen token: <%= Sqreen.config_get :token %>
+      Sqreen URL: <%= Sqreen.config_get :url %>
+      Sqreen logged in: <%= Sqreen.logged_in %>
+      Sqreen js: <%= Sqreen::Rules::ExecJSCB.js_service.variant  if Sqreen::Rules::ExecJSCB..respond_to?(:js_service) %>
+  <% else %>
+      Sqreen not defined</li>
+  <% end %>
+      Sqreen mini racer version: <%=  Sqreen::MiniRacer::VERSION if defined?(Sqreen::MiniRacer) %>
+      Exec js runtime: <%= ExecJS.runtime.inspect %>
+      Exec js result: <%= ExecJS.eval "'red yellow blue'.split(' ')" %>
+    </pre>
+    <h3>Sqreen.log</h3>
+    <pre>
+    <%= path = File.join(Rails.root, "log", "sqreen.log")
+      if File.exists?(path) then
+        File.read(path)
+      else
+        "no file '#{path}' found"
+      end
+      %>
+    </pre>
+    </div>
     <div class="col-md-9 char-list">
       <h2 class="col-lg-12">Vote for your favorite character!</h2>
       <% @cows.each do |cow| %>
